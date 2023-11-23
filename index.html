@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dépôt des comptes rendus</title>
+    <link rel="icon" href="/icon.png" type="image/png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      id="file-upload-container"
+      ondragover="dragOverHandler(event);"
+      ondrop="dropHandler(event);"
+    >
+      <input type="file" id="file-upload" accept=".pdf" />
+      <p>Déposez votre pdf ici</p>
+      <div id="file-name-display"></div>
+    </div>
+    <button id="upload-button">Envoyer</button>
+    <button id="cancel-button">Annuler</button>
+
+    <div id="holder"></div>
+
+    <div id="text-position">
+      Pensez à renommer votre fichier :<br /><br />
+      <span id="important-text">RAPPORT_NOM1_NOM2_ESE(A ou B)</span>
+    </div>
+
+    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
