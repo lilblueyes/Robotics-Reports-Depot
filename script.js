@@ -374,38 +374,44 @@ FILE_UPLOAD_CONTAINER.addEventListener("dragleave", () => {
 });
 
 function uploadFile(file) {
-  const ACCESS_TOKEN =
-    "DROPBOX_TOKEN";
-  var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
-
   FILE_UPLOAD_CONTAINER.style.borderColor = "#0070e0";
 
-  dbx
-    .filesUpload({
-      path: "/Dépôt Rapports SAÉ Robot/" + file.name,
-      contents: file,
-    })
-    .then(function (response) {
-      FILE_UPLOAD_CONTAINER.style.borderColor = "green";
-      document.getElementById("upload-button").style.display = "none";
-      document.getElementById("cancel-button").style.display = "none";
-      var dropText = document.querySelector("#file-upload-container p");
-      if (dropText) {
-        dropText.textContent = "Fichier déposé :";
-      }
-      var textPosition = document.getElementById("text-position");
-      if (textPosition) {
-        textPosition.innerHTML = "<span id='important-text'>MERCI !</span>";
-      }
-      alert("Fichier envoyé !");
-      console.log(response);
-    })
-    .catch(function (error) {
-      FILE_UPLOAD_CONTAINER.style.borderColor = "red";
-      console.error(error);
-      alert("Erreur pendant l'envoi, réessaie, sinon contacte Jocelyn");
-    });
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('filename', file.name);
+
+  fetch('/api/upload-to-dropbox', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Le serveur a rencontré une erreur lors du téléchargement du fichier.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    FILE_UPLOAD_CONTAINER.style.borderColor = "green";
+    document.getElementById("upload-button").style.display = "none";
+    document.getElementById("cancel-button").style.display = "none";
+    var dropText = document.querySelector("#file-upload-container p");
+    if (dropText) {
+      dropText.textContent = "Fichier déposé :";
+    }
+    var textPosition = document.getElementById("text-position");
+    if (textPosition) {
+      textPosition.innerHTML = "<span id='important-text'>MERCI !</span>";
+    }
+    alert("Fichier envoyé !");
+    console.log(data);
+  })
+  .catch(error => {
+    FILE_UPLOAD_CONTAINER.style.borderColor = "red";
+    console.error(error);
+    alert("Erreur pendant l'envoi, réessaie, sinon contacte Jocelyn");
+  });
 }
+
 
 function dragOverHandler(event) {
   event.preventDefault();
