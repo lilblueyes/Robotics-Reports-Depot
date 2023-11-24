@@ -403,7 +403,7 @@ function uploadFile(file) {
     .catch(function (error) {
       FILE_UPLOAD_CONTAINER.style.borderColor = "red";
       console.error(error);
-      alert("Erreur pendant l'envoi, réessaie et sinon contacte Jocelyn");
+      alert("Erreur pendant l'envoi, réessaie, sinon contacte Jocelyn");
     });
 }
 
