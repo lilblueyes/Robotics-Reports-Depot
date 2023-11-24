@@ -380,7 +380,7 @@ function uploadFile(file) {
   formData.append('file', file);
   formData.append('filename', file.name);
 
-  fetch('/api/upload-to-dropbox', {
+  fetch('/api/dropbox', {
     method: 'POST',
     body: formData
   })
