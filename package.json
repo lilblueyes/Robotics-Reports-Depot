@@ -1,8 +1,0 @@
-{
-  "name": "robotics-reports-depot",
-  "version": "1.0.0",
-  "main": "script.js",
-  "dependencies": {
-    "dropbox": "^10.34.0"
-  },
-}
