@@ -375,7 +375,7 @@ FILE_UPLOAD_CONTAINER.addEventListener("dragleave", () => {
 
 function uploadFile(file) {
   const ACCESS_TOKEN =
-    "sl.BqehdTnqtUe8nQIMTNufmmwLUe6nLcr-acv6Li-NbCOjm4P48jtKtnEgBx673a7wh5cRc6ddqZ_9IHQ-2FA0CF6EyjeZNCjZ62bSkhz97ndHcz7gmsKpW4YMdajRJDA17_nVThYj47f7YHY";
+    "DROPBOX_TOKEN";
   var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
 
   FILE_UPLOAD_CONTAINER.style.borderColor = "#0070e0";
@@ -403,7 +403,7 @@ function uploadFile(file) {
     .catch(function (error) {
       FILE_UPLOAD_CONTAINER.style.borderColor = "red";
       console.error(error);
-      alert("Erreur pendant l'envoi, réessaie, sinon contacte Jocelyn");
+      alert("Erreur pendant l'envoi, réessaie et sinon contacte Jocelyn");
     });
 }
 
