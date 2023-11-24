@@ -1,0 +1,9 @@
+{
+  "name": "robotics-reports-depot",
+  "version": "1.0.0",
+  "main": "script.js",
+  "dependencies": {
+    "dropbox": "^X.X.X" // La version actuelle du module Dropbox sera inscrite ici
+  },
+  // ... d'autres champs comme "scripts" et "license"
+}
