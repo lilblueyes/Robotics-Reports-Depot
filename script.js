@@ -374,8 +374,7 @@ FILE_UPLOAD_CONTAINER.addEventListener("dragleave", () => {
 });
 
 function uploadFile(file) {
-  const ACCESS_TOKEN =
-    "DROPBOX_TOKEN";
+const ACCESS_TOKEN = process.env.DROPBOX_TOKEN;
   var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
 
   FILE_UPLOAD_CONTAINER.style.borderColor = "#0070e0";
